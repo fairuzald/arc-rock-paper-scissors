@@ -2,10 +2,17 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	
+}
+body{
 	background: #202b38;
 	color: #fff;
 }
+
 /* Bagian menu utama */
+.modeButton{
+	cursor : pointer;
+}
 .menu {
     display: flex;
     justify-content: center;

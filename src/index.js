@@ -1,4 +1,5 @@
 
+
 //tampilan menu utama
 const menu = () => {
 	const playBtn = document.querySelector(".playButton");
@@ -13,6 +14,7 @@ const menu = () => {
 		game.style.display = "flex";
 	})
 }	
+
 //game
 const game = () => {
 	let playerScore = 0;
@@ -133,9 +135,7 @@ const game = () => {
 		backButton.innerText = 'Main Menu';
 		backButton.style.display = 'flex';
 		reloadButton.addEventListener('click',() => {
-			playerScore = 0;
-			botScore = 0;
-			moves = 10;
+			window.location.reload();
 		})
 		backButton.addEventListener('click',() => {
 			window.location.reload();
@@ -151,3 +151,7 @@ const game = () => {
 // Mulai panggil Frame
 menu();
 game();
+function toggleMode(){
+	document.body.style.background = "white";
+	document.body.style.color = "black"
+}
