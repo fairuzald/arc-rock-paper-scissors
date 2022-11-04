@@ -1,0 +1,67 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width,
+				initial-scale=1.0">
+	<link rel="stylesheet" href="src/index.css">
+	<title>Rock Paper Scissor Game</title>
+</head>
+<body>
+	<div class="menu" >
+		<div class="title menu">Rock Paper Scissors</div>
+		<div class="menuBody">
+			<div class="text">
+				<h3><center>Mini Game Web</center</h3>
+			</div>
+			<button class="playButton">Play</button>
+			<button class="exitButton">Exit</button>
+		</div>
+	</div>
+
+	<div class = "game" id="games">
+		<!--Judul Game -->
+		<div class = "title">Rock Paper Scissor</div>
+		
+		<!--Tampilan Score -->
+		<div class = "score">
+			<div class = "playerScore">
+				<h2>Player</h2>
+				<br>
+				<p class = "playerPoint">0</p>
+			</div>	
+			<h2>VS</h2>
+			<div class = "botScore">
+				<h2>Bot</h2>
+				<p class = "botPoint">0</p>
+
+			</div>
+		</div>
+	
+		<div class="move">Tentukan Pilihanmu Kawan</div>
+		
+		<!--Sisa giliran -->
+		<div class="movesleft">Giliran: 10 </div>
+		
+		<!--Options available to player to play game -->
+		<div class="options">
+			<button class="rock" id="rock"><img src="rock.png" width="40" height="50">Rock</button>
+			<button class="paper" id="paper"><img src="paper.png" width="40" height="50">Paper</button>
+			<button class="scissor" id="scissor">Scissors</button>
+		<!--Lagi cari gambar yang cucok-->
+		</div>
+		
+		<!--Hasil Akhir -->
+		<div class="result"></div>
+		
+		<!--Refresh button -->
+		<button class="reload"></button>
+		<button class="mainMenu"></button>
+
+	</div>
+	<script src="src/index.js"></script>
+</body>
+</html>

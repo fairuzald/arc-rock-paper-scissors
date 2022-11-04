@@ -1,0 +1,181 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	background: #202b38;
+	color: #fff;
+}
+/* Bagian menu utama */
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  }
+
+.game{
+	display: none;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+}
+
+.menuBody{
+	display: flex;
+	width: 50vw;
+	justify-content: space-evenly;
+	margin-top: 5rem;
+}
+
+.playButton,.exitButton{
+	padding: 0.8rem;
+	width:60;
+	height :40;
+	border-radius: 10px;
+	background: rgb(3, 155, 84);
+	outline: none;
+	border-color: rgb(0, 155, 93);
+	border: none;
+	cursor: pointer;
+}
+.playButton:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: rgb(33, 220, 67);
+}
+.exitButton:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: rgb(33, 220, 67);
+}
+
+/* Bagian Game  */
+.title{
+	
+	top: 0;
+	font-size: 4rem;
+	z-index: 2;
+    color :aquamarine;
+}
+
+/*Tampilan Skor */
+.score{
+	display: flex;
+	width: 30vw;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 3px solid rgb(10, 225, 197);
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+
+/* Nilai Skor*/
+.playerPoint,.botPoint{
+	text-align: center;
+	font-size: 1.5rem;
+	margin-top: 1rem;
+}
+
+/* button di satu line */
+.options{
+	display: flex;
+	width: 50vw;
+	justify-content: space-evenly;
+	margin-top: 2rem;
+}
+
+/* efek button ketika di ditimpa */
+.rock:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: rgb(33, 220, 67);
+	
+}
+.paper:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: rgb(33, 220, 67);
+	
+}
+.scissor:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: rgb(33, 220, 67);
+	
+}
+/* button rock paper scissors */
+.rock, .paper, .scissor{
+	padding: 0.8rem;
+	width:60;
+	height :40;
+	border-radius: 10px;
+	background: green;
+	outline: none;
+	border-color: green;
+	border: none;
+	cursor: pointer;
+}
+
+.move{
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+/* button akhir */
+.reload,.mainMenu {
+	display: none;
+	margin-top: 2rem;
+	padding: 1rem;
+	background: green;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.reload:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: rgb(33, 220, 67);
+}
+.mainMenu:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: rgb(33, 220, 67);
+}
+
+.result{
+	margin-top: 20px;
+	font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 612px)
+{
+	.title{
+		text-align: center;
+	}
+	.score{
+		position: absolute;
+		top: 200px;
+		width: 100vw;
+	}
+	.options{
+		width: 100vw;
+	}
+}
