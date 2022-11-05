@@ -1,5 +1,3 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,22 +10,23 @@
 </head>
 <body>
 	<div class="app">
-		<button class="modeButton" onclick="toggleMode()">Mode</button>
+		<button class="modeButton" id = "modeButton"onclick="toggleMode()"><img src="dark.png"></button>
 		<div class="menu" >
-			<div class="title" id="title">Rock Paper Scissors</div>
-			<div class="menuBody">
-				<h3><center>Mini Game Web</center</h3>
-			<button class="menuButton" id="playButton">Play</button>
+			<h1 class="title" id="title">Rock Paper Scissors</h1>
+			<h3 class="miniText" id="miniText"><center>Mini Game Web</center></h3>
+		<div class="menuBody">
+			<input placeholder="Masukkan nama" id="name"><br>
+			<button class="menuButton" id="playButton" onclick="welcome()">Play</button><br>
 			<button class="menuButton" id="exitButton">Exit</button>
 		</div>
 	</div>
 
 	<div class = "game" id="games">
 		<!--Judul Game -->
-		<div class = "title" id = "title">Rock Paper Scissor</div>
+		<h1 class = "title" id = "titles">Rock Paper Scissor</h1>
 		
 		<!--Tampilan Score -->
-		<div class = "score">
+		<div class = "score" id="scores">
 			<div class = "playerScore">
 				<h2>Player</h2>
 				<br>
@@ -38,17 +37,17 @@
 				<h2>Bot</h2>
 				<p class = "botPoint">0</p>
 
-			</div>
+			</div>	
 		</div>
 	
 		<div class="move">Tentukan Pilihanmu Kawan</div>
 		
 		<!--Sisa giliran -->
-		<div class="movesleft">Giliran: 10 </div>
+		<div class="movesleft">Kesempatan: 10 </div>
 		
-		<!--Options available to player to play game -->
+		
 		<div class="options">
-			<button class="button" id="rock"><img class="imageButton" src="rock.png">Rock</button>
+			<button class="button" id="rock"><img class="imageButton" src="rock.png" >Rock</button>
 			<button class="button" id="paper"><img class="imageButton" src="paper.png">Paper</button>
 			<button class="button" id="scissor"> <img class="imageButton" src="scissors.png">Scissors</button>
 		<!--Lagi cari gambar yang cucok-->

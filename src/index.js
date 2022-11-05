@@ -1,31 +1,60 @@
+function welcome() {
+	let Name = document.getElementById("name").value; 
+	console.log(Name);
+	alert("Welcome "+Name);
+}
+
 function toggleMode(){
-	var element = document.body;
-	element.classList.toggle("light-mode");
 	var select = document.getElementById("title");
-	select.classList.toggle("title-light");
+	var select2 = document.getElementById("titles");
+	var scoreboard = document.getElementById("scores");
+	var text = document.getElementById("miniText");
 	if (document.body.style.background=="white"){
+		document.body.style.background="#202b38";
 		select.classList.remove("title-light");
 		select.classList.add("title");
+		select2.classList.remove("title-light");
+		select2.classList.add("title");
+		text.classList.remove("miniText-light");
+		text.classList.add("miniText");
+		scoreboard.classList.remove("score-light");
+		scoreboard.classList.add("score");
+		games.classList.remove("game-light")
+		games.classList.add("game")
 	}
 	else{
+		// for (var i = 0; i < select.length; i++) {
+		// 	select[i].classList.remove("title");
+		// 	select[i].classList.add("title-light");
+		// 	} kenapa ya gak berfungsi ???
 		select.classList.remove("title");
 		select.classList.add("title-light");
+		select2.classList.remove("title");
+		select2.classList.add("title-light");
+		text.classList.remove("miniText");
+		text.classList.add("miniText-light");
+		document.body.style.background="white";
+		scoreboard.classList.remove("score");
+		scoreboard.classList.add("score-light");
+		games.classList.remove("game")
+		games.classList.add("game-light")
+
 	}
 }
 
-//tampilan menu utama 
+//tampilan menu utama 	
 const menu = () => {
 	const playBtn = document.querySelector("#playButton");
 	const game = document.querySelector(".game");
 	const menu = document.querySelector(".menu");
 	const exitButton = document.querySelector("#exitButton");
-	exitButton.addEventListener('click',() => {
-		window.close();
-	})
 	playBtn.addEventListener('click',() => {
 		menu.style.display = "none";
 		game.style.display = "flex";
 	})
+	exitButton.addEventListener('click',() => {
+		window.close();
+	}) // aku gak ngerti kenapa gak berfungsi ya
 }	
 
 //game
@@ -47,7 +76,7 @@ const game = () => {
 			action.addEventListener('click',function(){
 				const movesLeft = document.querySelector('.movesleft');
 				moves--;
-				movesLeft.innerText = `Giliran : ${moves}`;
+				movesLeft.innerText = `Kesempatan : ${moves}`;
 				// pilihan random bot
 				const botChoice = botTurn[Math.floor(Math.random()*3)];
 				// untuk cek pemenangnya siapa
@@ -138,13 +167,10 @@ const game = () => {
 		reloadButton.style.display = 'flex';
 		backButton.innerText = 'Main Menu';
 		backButton.style.display = 'flex';
-		reloadButton.addEventListener('click',() => {
-			playerScore = 0;
-			botScore = 0;
-			moves = 10;
-			playGame();
+		reloadButton.addEventListener('click',function(){
+			//Belum selesai sebenarnya
 		})
-		backButton.addEventListener('click',() => {
+		backButton.addEventListener('click',function(){
 			window.location.reload();
 		})
 	}
