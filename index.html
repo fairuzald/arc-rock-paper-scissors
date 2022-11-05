@@ -13,20 +13,18 @@
 <body>
 	<div class="app">
 		<button class="modeButton" onclick="toggleMode()">Mode</button>
-	<div class="menu" >
-		<div class="title menu">Rock Paper Scissors</div>
-		<div class="menuBody">
-			<div class="text">
+		<div class="menu" >
+			<div class="title" id="title">Rock Paper Scissors</div>
+			<div class="menuBody">
 				<h3><center>Mini Game Web</center</h3>
-			</div>
-			<button class="playButton">Play</button>
-			<button class="exitButton">Exit</button>
+			<button class="menuButton" id="playButton">Play</button>
+			<button class="menuButton" id="exitButton">Exit</button>
 		</div>
 	</div>
 
 	<div class = "game" id="games">
 		<!--Judul Game -->
-		<div class = "title">Rock Paper Scissor</div>
+		<div class = "title" id = "title">Rock Paper Scissor</div>
 		
 		<!--Tampilan Score -->
 		<div class = "score">
@@ -50,9 +48,9 @@
 		
 		<!--Options available to player to play game -->
 		<div class="options">
-			<button class="rock" id="rock"><img src="rock.png" width="40" height="50">Rock</button>
-			<button class="paper" id="paper"><img src="paper.png" width="40" height="50">Paper</button>
-			<button class="scissor" id="scissor">Scissors</button>
+			<button class="button" id="rock"><img class="imageButton" src="rock.png">Rock</button>
+			<button class="button" id="paper"><img class="imageButton" src="paper.png">Paper</button>
+			<button class="button" id="scissor"> <img class="imageButton" src="scissors.png">Scissors</button>
 		<!--Lagi cari gambar yang cucok-->
 		</div>
 		

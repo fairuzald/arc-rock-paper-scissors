@@ -1,11 +1,24 @@
+function toggleMode(){
+	var element = document.body;
+	element.classList.toggle("light-mode");
+	var select = document.getElementById("title");
+	select.classList.toggle("title-light");
+	if (document.body.style.background=="white"){
+		select.classList.remove("title-light");
+		select.classList.add("title");
+	}
+	else{
+		select.classList.remove("title");
+		select.classList.add("title-light");
+	}
+}
 
-
-//tampilan menu utama
+//tampilan menu utama 
 const menu = () => {
-	const playBtn = document.querySelector(".playButton");
+	const playBtn = document.querySelector("#playButton");
 	const game = document.querySelector(".game");
 	const menu = document.querySelector(".menu");
-	const exitButton = document.querySelector(".exitButton");
+	const exitButton = document.querySelector("#exitButton");
 	exitButton.addEventListener('click',() => {
 		window.close();
 	})
@@ -17,15 +30,15 @@ const menu = () => {
 
 //game
 const game = () => {
-	let playerScore = 0;
-	let botScore = 0;
-	let moves = 10;
+	var playerScore = 0;
+	var botScore = 0;
+	var moves = 10;
 
 	// Deklarasi awal button player
 	const playGame = () => {
-		const rockButton = document.querySelector('#rock.rock');
-		const paperButton = document.querySelector('#paper.paper');
-		const scissorButton = document.querySelector('.scissor');
+		const rockButton = document.querySelector('#rock');
+		const paperButton = document.querySelector('#paper');
+		const scissorButton = document.querySelector('#scissor');
 		const playerTurn = [rockButton,paperButton,scissorButton];
 		const botTurn = ['rock','paper','scissors']
 
@@ -63,44 +76,35 @@ const game = () => {
 		}
 		//Kasus kalah menang
 		//Kasus batu
-		else if(player == 'rock'){
-			if(bot == 'paper'){
+		else if(player == 'rock' && bot == 'paper'){
 				result.textContent = 'Bot Menang';
 				botScore++;
-				botScoreBoard.textContent = botScore;
-
-			}else{
+				botScoreBoard.textContent = botScore;}
+		else if (player == 'rock'){
 				result.textContent = 'Player Menang'
 				playerScore++;
-				playerScoreBoard.textContent = playerScore;
-			}
-		}
+				playerScoreBoard.textContent = playerScore;}
 		//Kasus gunting
-		else if(player == 'scissors'){
-			if(bot == 'rock'){
+		else if (player == 'scissors' && bot == 'rock'){
 				result.textContent = 'Bot Menang';
 				botScore++;
-				botScoreBoard.textContent = botScore;
-			}else{
+				botScoreBoard.textContent = botScore;}
+		else if (player == 'scissors'){
 				result.textContent = 'Kamu Menang';
 				playerScore++;
 				playerScoreBoard.textContent = playerScore;
 			}
-		}
 		//Kasus Kertas
-		else if(player == 'paper'){
-			if(bot == 'scissors'){
+		else if(player == 'paper' && bot == 'scissors'){
 				result.textContent = 'Bot Menang';
 				botScore++;
-				botScoreBoard.textContent = botScore;
-			}else{
+				botScoreBoard.textContent = botScore;}
+		else{
 				result.textContent = 'Kamu Menang';
 				playerScore++;
 				playerScoreBoard.textContent = playerScore;
 			}
-		}
 	}
-
 	// Giliran udah limit
 	const gameOver = (playerTurn,movesLeft) => {
 		const chooseMove = document.querySelector('.move');
@@ -135,7 +139,10 @@ const game = () => {
 		backButton.innerText = 'Main Menu';
 		backButton.style.display = 'flex';
 		reloadButton.addEventListener('click',() => {
-			window.location.reload();
+			playerScore = 0;
+			botScore = 0;
+			moves = 10;
+			playGame();
 		})
 		backButton.addEventListener('click',() => {
 			window.location.reload();
@@ -151,7 +158,3 @@ const game = () => {
 // Mulai panggil Frame
 menu();
 game();
-function toggleMode(){
-	document.body.style.background = "white";
-	document.body.style.color = "black"
-}
