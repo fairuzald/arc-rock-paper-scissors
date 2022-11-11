@@ -136,7 +136,7 @@ const game = () => {
 	}
 	// Giliran udah limit
 	const gameOver = (playerTurn,movesLeft) => {
-		const chooseMove = document.querySelector('.move');
+		var chooseMove = document.querySelector('.move');
 		const result = document.querySelector('.result');
 		const reloadButton = document.querySelector('.reload');
 		const backButton = document.querySelector('.mainMenu');
@@ -167,11 +167,30 @@ const game = () => {
 		reloadButton.style.display = 'flex';
 		backButton.innerText = 'Main Menu';
 		backButton.style.display = 'flex';
-		reloadButton.addEventListener('click',function(){
+		reloadButton.addEventListener('click',()=>{
+			const playerScoreBoard = document.querySelector('.playerPoint');
+			const botScoreBoard = document.querySelector('.botPoint');
+			playerTurn.forEach(action => {
+				action.style.display = 'flex';
+			})
+			chooseMove.innerText = 'Tentukan Pilihanmu Kawan!!'
+			reloadButton.style.display = 'none';
+			backButton.style.display = 'none';
+			playerScore = 0;
+			botScore = 0;
+			moves = 10;
+			movesLeft.style.display = 'flex';
+			botScoreBoard.textContent = botScore;
+			playerScoreBoard.textContent = playerScore;
+			// game();
+	})
 			//Belum selesai sebenarnya
-		})
 		backButton.addEventListener('click',function(){
-			window.location.reload();
+			// window.location.reload();
+			const game = document.querySelector(".game");
+			const menu = document.querySelector(".menu");
+			game.style.display = "none";
+			menu.style.display = "flex";
 		})
 	}
 
