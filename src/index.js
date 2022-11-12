@@ -62,15 +62,19 @@ const game = () => {
 	var playerScore = 0;
 	var botScore = 0;
 	var moves = 10;
-
+	
 	// Deklarasi awal button player
 	const playGame = () => {
 		const rockButton = document.querySelector('#rock');
+		const popUp = document.querySelector('.popUp');
 		const paperButton = document.querySelector('#paper');
 		const scissorButton = document.querySelector('#scissor');
+		const Image = document.getElementsByClassName("imageButton")
 		const playerTurn = [rockButton,paperButton,scissorButton];
 		const botTurn = ['rock','paper','scissors']
-
+		const playerHand = document.querySelector('.player-hand');
+		const computerHand = document.querySelector('.computer-hand')
+	
 		// Pengulangan aksi untuk tiap button
 		playerTurn.forEach(action => {
 			action.addEventListener('click',function(){
@@ -81,6 +85,10 @@ const game = () => {
 				const botChoice = botTurn[Math.floor(Math.random()*3)];
 				// untuk cek pemenangnya siapa
 				winner(this.innerText,botChoice)
+				playerHand.src = `src/${this.innerText}.png`;
+                computerHand.src = `src/${botChoice}.png`;
+				// pickOptions(action);
+				// popUp.innerText = `${this.innerText} VS ${botChoice} `;
 				// Deklarasi kalau jatah giliran sudah habis
 				if(moves == 0){
 					gameOver(playerTurn,movesLeft);
@@ -89,51 +97,35 @@ const game = () => {
 		})
 		
 	}
-
 	// Fungsi untuk menentukan pemenang
 	const winner = (player,bot) => {
 		const result = document.querySelector('.result');
 		const playerScoreBoard = document.querySelector('.playerPoint');
 		const botScoreBoard = document.querySelector('.botPoint');
+		
 		//antisipasi
 		player = player.toLowerCase();
 		bot = bot.toLowerCase();
-		
 		//Kasus seri
 		if(player == bot){
 			result.textContent = 'Seri'
 		}
-		//Kasus kalah menang
-		//Kasus batu
-		else if(player == 'rock' && bot == 'paper'){
+		//Kasus bot menang
+		else if(player == 'paper' && bot == 'scissors' ||
+				player == 'scissors' && bot == 'rock' ||
+				player == 'rock' && bot == 'paper'){
 				result.textContent = 'Bot Menang';
 				botScore++;
-				botScoreBoard.textContent = botScore;}
-		else if (player == 'rock'){
+				botScoreBoard.textContent = botScore;
+		}
+		//Kasus player menang
+		else{
 				result.textContent = 'Player Menang'
 				playerScore++;
-				playerScoreBoard.textContent = playerScore;}
-		//Kasus gunting
-		else if (player == 'scissors' && bot == 'rock'){
-				result.textContent = 'Bot Menang';
-				botScore++;
-				botScoreBoard.textContent = botScore;}
-		else if (player == 'scissors'){
-				result.textContent = 'Kamu Menang';
-				playerScore++;
 				playerScoreBoard.textContent = playerScore;
-			}
-		//Kasus Kertas
-		else if(player == 'paper' && bot == 'scissors'){
-				result.textContent = 'Bot Menang';
-				botScore++;
-				botScoreBoard.textContent = botScore;}
-		else{
-				result.textContent = 'Kamu Menang';
-				playerScore++;
-				playerScoreBoard.textContent = playerScore;
-			}
+		}
 	}
+		
 	// Giliran udah limit
 	const gameOver = (playerTurn,movesLeft) => {
 		var chooseMove = document.querySelector('.move');
@@ -179,18 +171,16 @@ const game = () => {
 			playerScore = 0;
 			botScore = 0;
 			moves = 10;
+			result.style.color = 'white';
+			result.style.fontSize = '1.2rem';
 			movesLeft.style.display = 'flex';
+			result.innerText = '';
 			botScoreBoard.textContent = botScore;
 			playerScoreBoard.textContent = playerScore;
-			// game();
 	})
 			//Belum selesai sebenarnya
 		backButton.addEventListener('click',function(){
-			// window.location.reload();
-			const game = document.querySelector(".game");
-			const menu = document.querySelector(".menu");
-			game.style.display = "none";
-			menu.style.display = "flex";
+			window.location.reload();
 		})
 	}
 
