@@ -54,7 +54,7 @@ const menu = () => {
 	})
 	exitButton.addEventListener('click',() => {
 		window.close();
-	}) // aku gak ngerti kenapa gak berfungsi ya
+	}) // aku gak ngerti kenapa kadang gak berfungsi ya
 }	
 
 //game
@@ -66,16 +66,15 @@ const game = () => {
 	// Deklarasi awal button player
 	const playGame = () => {
 		const rockButton = document.querySelector('#rock');
-		const popUp = document.querySelector('.popUp');
 		const paperButton = document.querySelector('#paper');
 		const scissorButton = document.querySelector('#scissor');
-		const Image = document.getElementsByClassName("imageButton")
 		const playerTurn = [rockButton,paperButton,scissorButton];
-		const botTurn = ['rock','paper','scissors']
+		const botTurn = ['rock','paper','scissors'];
 		const playerHand = document.querySelector('.player-hand');
-		const computerHand = document.querySelector('.computer-hand')
+		const botHand = document.querySelector('.bot-hand');
+		const hands = document.querySelectorAll('.popUp img');;
 	
-		// Pengulangan aksi untuk tiap button
+		// Aksi untuk tiap button
 		playerTurn.forEach(action => {
 			action.addEventListener('click',function(){
 				const movesLeft = document.querySelector('.movesleft');
@@ -83,18 +82,30 @@ const game = () => {
 				movesLeft.innerText = `Kesempatan : ${moves}`;
 				// pilihan random bot
 				const botChoice = botTurn[Math.floor(Math.random()*3)];
-				// untuk cek pemenangnya siapa
-				winner(this.innerText,botChoice)
-				playerHand.src = `src/${this.innerText}.png`;
-                computerHand.src = `src/${botChoice}.png`;
-				// pickOptions(action);
-				// popUp.innerText = `${this.innerText} VS ${botChoice} `;
-				// Deklarasi kalau jatah giliran sudah habis
-				if(moves == 0){
-					gameOver(playerTurn,movesLeft);
-				}
+				// untuk menampilkan gambar hasil pertandingan
+				
+				// call fungsi untuk cek pemenangnya siapa
+				setTimeout(() => {
+					winner(this.innerText,botChoice);
+					playerHand.src = `src/${this.innerText}match.png`;
+                	botHand.src = `src/${botChoice}match.png`;
+					// Deklarasi kalau jatah giliran sudah habis
+					if(moves == 0){
+						gameOver(playerTurn,movesLeft);
+					}
+				}, 2000);
+	
+				//Working on animation
+				playerHand.style.animation = 'shakePlayer 2s ease';
+				botHand.style.animation = 'shakeBot 2s ease';
+
 			})
 		})
+		hands.forEach(hand => {
+			hand.addEventListener('animationend', function(){
+				this.style.animation = "";
+			});
+		});
 		
 	}
 	// Fungsi untuk menentukan pemenang
@@ -103,9 +114,6 @@ const game = () => {
 		const playerScoreBoard = document.querySelector('.playerPoint');
 		const botScoreBoard = document.querySelector('.botPoint');
 		
-		//antisipasi
-		player = player.toLowerCase();
-		bot = bot.toLowerCase();
 		//Kasus seri
 		if(player == bot){
 			result.textContent = 'Seri'
@@ -162,6 +170,8 @@ const game = () => {
 		reloadButton.addEventListener('click',()=>{
 			const playerScoreBoard = document.querySelector('.playerPoint');
 			const botScoreBoard = document.querySelector('.botPoint');
+			const playerHand = document.querySelector('.player-hand');
+			const botHand = document.querySelector('.bot-hand');
 			playerTurn.forEach(action => {
 				action.style.display = 'flex';
 			})
@@ -175,6 +185,8 @@ const game = () => {
 			result.style.fontSize = '1.2rem';
 			movesLeft.style.display = 'flex';
 			result.innerText = '';
+			playerHand.src = `src/rockmatch.png`;
+            botHand.src = `src/rockmatch.png`;
 			botScoreBoard.textContent = botScore;
 			playerScoreBoard.textContent = playerScore;
 	})

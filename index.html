@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
-		content="width=device-width,
-				initial-scale=1.0">
+	content="width=device-width,
+	initial-scale=1.0">
 	<link rel="stylesheet" href="src/index.css">
 	<title>Rock Paper Scissor Game</title>
 </head>
@@ -14,8 +14,8 @@
 		<div class="menu" >
 			<h1 class="title" id="title">Rock Paper Scissors</h1>
 			<h3 class="miniText" id="miniText"><center>Mini Game Web</center></h3>
-		<div class="menuBody">
-			<input placeholder="Masukkan nama" id="name"><br>
+			<div class="menuBody">
+				<input placeholder="Masukkan nama" id="name"><br>
 			<button class="menuButton" id="playButton" onclick="welcome()">Play</button><br>
 			<button class="menuButton" id="exitButton">Exit</button>
 		</div>
@@ -27,10 +27,11 @@
 		
 		<!--Tampilan Score -->
 		<div class = "score" id="scores">
+			<div class="result"></div>
 			<div class="popUp">
-				<img src="src/rock.png" alt="" class="player-hand">
-				<h1>VS</h1>
-				<img src="src/rock.png" alt="" class="computer-hand">
+				<img src="src/rockmatch.png" alt="" class="player-hand">
+				<h1 class="Vs">VS</h1>
+				<img src="src/rockmatch.png" alt="" class="bot-hand">
 			</div>
 			<div class="point">
 				<div class = "playerScore">
@@ -59,7 +60,6 @@
 		
 		<!--Hasil Akhir -->
 		<!-- <div class="result"></div> -->
-		<div class="result"></div>
 		
 		<!--Refresh button -->
 		<button class="reload"></button>
