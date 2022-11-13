@@ -87,7 +87,8 @@ const game = () => {
 				playerTurn.forEach(buttons => {
 					buttons.disabled = true;
 				})
-				
+				playerHand.src = `src/rockmatch.png`;
+                botHand.src = `src/rockmatch.png`;
 				setTimeout(() => {
 					// call fungsi untuk cek pemenangnya siapa
 					winner(this.innerText,botChoice);

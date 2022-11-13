@@ -56,7 +56,6 @@ body{
 	cursor : pointer;
 	position: absolute;
 	display: flex;
-	padding: 0.2rem;
 	width: 30px;
 	height :30px;
 	border-radius: 1000px;
@@ -103,6 +102,9 @@ body{
     align-items: center;
     flex-direction: column;
 	
+}
+#playButton{
+	margin-bottom: 7vh;
 }
 
 .game{
@@ -209,6 +211,7 @@ body{
 	background: rgb(3, 155, 84);
 	outline: none;
 	border-color: rgb(3, 155, 84);
+	align-items: center;
 	border: none;
 	cursor: pointer;
 	margin: 3%;
@@ -216,7 +219,6 @@ body{
 	font-weight: bold;
     padding: 1vh 0.7vw;
     border-radius: 2vh;
-	text-justify:distribute;
 }
 
 button:disabled{
@@ -225,10 +227,11 @@ button:disabled{
 }
 button:disabled:hover{
 	background-color: #b8b6b6;
+	cursor: wait;
   }
 
 
-.bot-hand {
+  .bot-hand {
 	width: 9vw;
 	height: 14vh;
 
@@ -264,6 +267,7 @@ button:disabled:hover{
 	cursor: pointer;
 }
 
+​
 .reload:hover{
 	cursor:pointer;
 	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
