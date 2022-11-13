@@ -1,14 +1,14 @@
-function welcome() {
-	let Name = document.getElementById("name").value; 
-	console.log(Name);
-	alert("Welcome "+Name);
-}
+// function welcome() {
+// 	let Name = document.getElementById("name").value; 
+// 	console.log(Name);
+// 	alert("Welcome "+Name);
+// }
 
 function toggleMode(){
-	var select = document.getElementById("title");
-	var select2 = document.getElementById("titles");
-	var scoreboard = document.getElementById("scores");
-	var text = document.getElementById("miniText");
+	const select = document.getElementById("title");
+	const select2 = document.getElementById("titles");
+	const scoreboard = document.getElementById("scores");
+	const text = document.getElementById("miniText");
 	if (document.body.style.background=="white"){
 		document.body.style.background="#202b38";
 		select.classList.remove("title-light");
@@ -61,7 +61,7 @@ const menu = () => {
 const game = () => {
 	var playerScore = 0;
 	var botScore = 0;
-	var moves = 10;
+	var moves = 5;
 	
 	// Deklarasi awal button player
 	const playGame = () => {
@@ -84,9 +84,17 @@ const game = () => {
 				const botChoice = botTurn[Math.floor(Math.random()*3)];
 				// untuk menampilkan gambar hasil pertandingan
 				
-				// call fungsi untuk cek pemenangnya siapa
+				playerTurn.forEach(buttons => {
+					buttons.disabled = true;
+				})
+				
 				setTimeout(() => {
+					// call fungsi untuk cek pemenangnya siapa
 					winner(this.innerText,botChoice);
+					playerTurn.forEach(buttons => {
+						buttons.disabled = false;
+					})
+
 					playerHand.src = `src/${this.innerText}match.png`;
                 	botHand.src = `src/${botChoice}match.png`;
 					// Deklarasi kalau jatah giliran sudah habis
@@ -94,7 +102,6 @@ const game = () => {
 						gameOver(playerTurn,movesLeft);
 					}
 				}, 2000);
-	
 				//Working on animation
 				playerHand.style.animation = 'shakePlayer 2s ease';
 				botHand.style.animation = 'shakeBot 2s ease';
@@ -180,7 +187,7 @@ const game = () => {
 			backButton.style.display = 'none';
 			playerScore = 0;
 			botScore = 0;
-			moves = 10;
+			moves = 5;
 			result.style.color = 'white';
 			result.style.fontSize = '1.2rem';
 			movesLeft.style.display = 'flex';

@@ -2,29 +2,27 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport"
-	content="width=device-width,
-	initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="src/index.css">
 	<title>Rock Paper Scissor Game</title>
 </head>
 <body>
 	<div class="app">
-		<button class="modeButton" id = "modeButton"onclick="toggleMode()"><img src="dark.png" class="darkmode"></button>
+		<button class="modeButton" id = "modeButton" onclick="toggleMode()"><img src="dark.png" class="darkmode"></button>
 		<div class="menu" >
 			<h1 class="title" id="title">Rock Paper Scissors</h1>
-			<h3 class="miniText" id="miniText"><center>Mini Game Web</center></h3>
+			<h3 class="miniText" id="miniText">Mini Game Web</h3>
 			<div class="menuBody">
-				<input placeholder="Masukkan nama" id="name"><br>
-			<button class="menuButton" id="playButton" onclick="welcome()">Play</button><br>
-			<button class="menuButton" id="exitButton">Exit</button>
+				<!-- <input placeholder="Masukkan nama" id="name"> -->
+				<button class="menuButton" id="playButton" onclick="welcome()">Play</button><br>
+				<button class="menuButton" id="exitButton">Exit</button>
+			</div>
 		</div>
-	</div>
 
 	<div class = "game" id="games">
 		<!--Judul Game -->
 		<h1 class = "title" id = "titles">Rock Paper Scissor</h1>
-		
 		<!--Tampilan Score -->
 		<div class = "score" id="scores">
 			<div class="result"></div>
@@ -45,11 +43,9 @@
 			</div>
 		</div>
 		
-		
 		<!--Sisa giliran -->
-		<div class="movesleft">Kesempatan: 10 </div>
+		<div class="movesleft">Kesempatan : 5 </div>
 		<div class="move">Tentukan Pilihanmu Kawan</div>
-		
 		
 		<div class="options">
 			<button class="button" id="rock"><img class="imageButton" src="src/rock.png" >rock</button><!--Coba pake multidictionary-->
@@ -58,8 +54,6 @@
 		<!--Lagi cari gambar yang cucok-->
 		</div>
 		
-		<!--Hasil Akhir -->
-		<!-- <div class="result"></div> -->
 		
 		<!--Refresh button -->
 		<button class="reload"></button>
