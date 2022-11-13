@@ -2,7 +2,7 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	/* color: #fff;W */
+	/* color: #fff; */
 	
 }
 *:not(h1, h2) {
@@ -10,12 +10,16 @@
     font-size: 2vh;
 }
 body{
-	background: #202b38;
+	/* background: #142938; */
+	background-image: linear-gradient(to right bottom, #191b2a, #122a3b);
 	color: #fff;
 }
 
+
+
 .light-mode {
-  background: white;
+	background-image: linear-gradient(to right bottom, #ffffff, #d3d8ee);
+  /* background: white; */
   color: rgb(0, 0, 0);
 }
 
@@ -34,12 +38,12 @@ body{
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
-    border: 0.8vw solid rgb(0, 0, 0);
-	border-style: inset;
+	border-radius: 2vw;
     width: 40vw;
     height: 55vh;
-	background-color: rgb(154, 154, 154);
-    text-align: center; 	 	 
+	background-color: rgb(21, 21, 21);
+	background-image: linear-gradient(to right bottom, #dce2f0	,#c8cfec);
+    text-align: center;	 	 
 }
 .title-light{
 	top: 0;
@@ -50,6 +54,22 @@ body{
 } 
 .miniText-light{
 	color:black;
+}
+.menu-light{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;	
+	text-indent: 50px;
+	letter-spacing: 0.4vw;
+	line-height: 8vh;
+	position: absolute; 
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	background-image: linear-gradient(to right bottom, #ffffff, #d3d8ee);
 }
 /* Bagian menu utama */
 .modeButton{
@@ -78,7 +98,7 @@ body{
 	height: 30px;
 }
 
-.menu {
+.menu{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,6 +112,7 @@ body{
     left: 0;
     right: 0;
 	text-align: center;
+	background-image: linear-gradient(to right bottom, #191b2a, #122a3b);
 }
 
 .menuBody{
@@ -122,9 +143,8 @@ body{
 	width:60;
 	height :40;
 	border-radius: 10px;
-	background: rgb(3, 155, 84);
 	outline: none;
-	border-color: rgb(0, 155, 93);
+	background-image: linear-gradient(to left bottom, rgb(0, 255, 204), rgb(38, 84, 75));
 	border: none;
 	cursor: pointer;
 }
@@ -132,7 +152,7 @@ body{
 	cursor:pointer;
 	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
 	transform: scale(110%);
-	background: rgb(33, 220, 67);
+	background: rgb(27, 211, 174) ;
 }
 
 /* Bagian Game  */
@@ -151,11 +171,11 @@ body{
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
-    border: 0.8vw solid rgb(10, 225, 197);
-	border-style: inset;
+	border-radius: 2vw;
     width: 40vw;
     height: 55vh;
 	background-color: rgb(21, 21, 21);
+	background-image: linear-gradient(to right bottom, #112c40,#272b45);
     text-align: center;
 }
 .point{
@@ -201,16 +221,35 @@ body{
 	cursor:pointer;
 	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
 	transform: scale(110%);
-	background: rgb(33, 220, 67);
+	background: rgb(27, 211, 174) ;
+}	
+.button-light:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: #8f9fee;
 }	
 
 /* button rock paper scissors */
 .button{
 	display: flex;
 	flex-direction: column;
-	background: rgb(3, 155, 84);
 	outline: none;
-	border-color: rgb(3, 155, 84);
+	background-image: linear-gradient(to left bottom, rgb(27, 211, 174), rgb(40, 104, 91));
+	align-items: center;
+	border: none;
+	cursor: pointer;
+	margin: 3%;
+    position: relative;
+	font-weight: bold;
+    padding: 1vh 0.7vw;
+    border-radius: 2vh;
+}
+.button-light{
+	display: flex;
+	flex-direction: column;
+	outline: none;
+	background-image: linear-gradient(to left bottom,  #b2c4fa,#8f9fee);
 	align-items: center;
 	border: none;
 	cursor: pointer;
@@ -223,7 +262,7 @@ body{
 
 button:disabled{
   background-color: #878787;
-  color: #606060;
+  color: white;
 }
 button:disabled:hover{
 	background-color: #b8b6b6;
@@ -231,7 +270,7 @@ button:disabled:hover{
   }
 
 
-  .bot-hand {
+.bot-hand {
 	width: 9vw;
 	height: 14vh;
 
@@ -256,29 +295,22 @@ button:disabled:hover{
 }
 
 /* button akhir */
-.reload,.mainMenu {
+.finalButton {
 	display: none;
 	margin-top: 2rem;
 	padding: 1rem;
-	background: rgb(3, 155, 84);;
-	outline: none;
-	border: none;
+	background-image: linear-gradient(to left bottom, rgb(27, 211, 174), rgb(40, 104, 91));
 	border-radius: 10px;
 	cursor: pointer;
+	outline: none;
+	border: none;
 }
 
-​
-.reload:hover{
+.finalButton:hover{
 	cursor:pointer;
 	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
 	transform: scale(110%);
-	background: rgb(33, 220, 67);
-}
-.mainMenu:hover{
-	cursor:pointer;
-	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
-	transform: scale(110%);
-	background: rgb(33, 220, 67);
+	background: rgb(27, 211, 174) ;
 }
 
 .result{

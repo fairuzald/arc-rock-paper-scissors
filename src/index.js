@@ -9,8 +9,12 @@ function toggleMode(){
 	const select2 = document.getElementById("titles");
 	const scoreboard = document.getElementById("scores");
 	const text = document.getElementById("miniText");
-	if (document.body.style.background=="white"){
-		document.body.style.background="#202b38";
+	const menu = document.getElementById("menu");
+	const button = document.querySelector(".button");
+	if (document.body.style.backgroundImage=="linear-gradient(to right bottom, rgb(255, 255, 255), rgb(211, 216, 238))"){
+		document.body.style.backgroundImage="linear-gradient(to right bottom, #191b2a, #122a3b)";
+		menu.classList.remove("menu-light");
+		menu.classList.add("menu");
 		select.classList.remove("title-light");
 		select.classList.add("title");
 		select2.classList.remove("title-light");
@@ -21,23 +25,26 @@ function toggleMode(){
 		scoreboard.classList.add("score");
 		games.classList.remove("game-light")
 		games.classList.add("game")
+		// button.classList.remove("button-light");
+		// button.classList.add("button");
 	}
 	else{
-		// for (var i = 0; i < select.length; i++) {
-		// 	select[i].classList.remove("title");
-		// 	select[i].classList.add("title-light");
-		// 	} kenapa ya gak berfungsi ???
+		menu.classList.remove("menu");
+		menu.classList.add("menu-light");
+		// button.classList.remove("button");
+		// button.classList.add("button-light");
 		select.classList.remove("title");
 		select.classList.add("title-light");
 		select2.classList.remove("title");
 		select2.classList.add("title-light");
 		text.classList.remove("miniText");
 		text.classList.add("miniText-light");
-		document.body.style.background="white";
+		document.body.style.backgroundImage="linear-gradient(to right bottom, #ffffff, #d3d8ee)";
 		scoreboard.classList.remove("score");
 		scoreboard.classList.add("score-light");
 		games.classList.remove("game")
 		games.classList.add("game-light")
+		
 
 	}
 }
@@ -146,8 +153,8 @@ const game = () => {
 	const gameOver = (playerTurn,movesLeft) => {
 		var chooseMove = document.querySelector('.move');
 		const result = document.querySelector('.result');
-		const reloadButton = document.querySelector('.reload');
-		const backButton = document.querySelector('.mainMenu');
+		const reloadButton = document.querySelector('#reset');
+		const backButton = document.querySelector('#mainMenu');
 
 		playerTurn.forEach(action => {
 			action.style.display = 'none';
