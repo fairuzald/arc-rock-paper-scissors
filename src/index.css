@@ -157,6 +157,22 @@ body{
 	transform: scale(110%);
 	background: rgb(27, 211, 174) ;
 }
+.menuButton-light{
+	padding: 0.8rem;
+	width:60;
+	height :40;
+	border-radius: 10px;
+	outline: none;
+	background-image: linear-gradient(to left bottom,#bdcdfd,#8f9fee);
+	border: none;
+	cursor: pointer;
+}
+.menuButton-light:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: #8f9fee ;
+}
 
 /* Bagian Game  */
 .title{
@@ -255,7 +271,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	outline: none;
-	background-image: linear-gradient(to left bottom,  #b2c4fa,#8f9fee);
+	background-image: linear-gradient(to left bottom,  #bdcdfd,#8f9fee);
 	align-items: center;
 	border: none;
 	cursor: pointer;
@@ -317,6 +333,23 @@ button:disabled:hover{
 	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
 	transform: scale(110%);
 	background: rgb(27, 211, 174) ;
+}
+.finalButton-light {
+	display: none;
+	margin-top: 2rem;
+	padding: 1rem;
+	background-image: linear-gradient(to left bottom, #bdcdfd,#8f9fee);
+	border-radius: 10px;
+	cursor: pointer;
+	outline: none;
+	border: none;
+}
+
+.finalButton-light:hover{
+	cursor:pointer;
+	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
+	transform: scale(110%);
+	background: #8f9fee ;
 }
 
 .result{
