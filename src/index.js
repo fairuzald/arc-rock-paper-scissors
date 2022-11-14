@@ -1,10 +1,4 @@
-// function welcome() {
-// 	let Name = document.getElementById("name").value; 
-// 	console.log(Name);
-// 	alert("Welcome "+Name);
-// }
-
-function toggleMode(){
+const toggleMode=()=>{
 	const select = document.getElementById("title");
 	const select2 = document.getElementById("titles");
 	const scoreboard = document.getElementById("scores");
@@ -38,11 +32,11 @@ function toggleMode(){
 			buttons.classList.remove("finalButton-light");
 			buttons.classList.add("finalButton");}
 			)
-		menuButton.forEach((buttons)=>{
+			menuButton.forEach((buttons)=>{
 			buttons.classList.remove("menuButton-light");
 			buttons.classList.add("menuButton");}
 			)
-			}
+		}
 	else{
 		menu.classList.remove("menu");
 		menu.classList.add("menu-light");
@@ -63,18 +57,18 @@ function toggleMode(){
         allButton.forEach((buttons)=>{
 			buttons.classList.remove("button");
 			buttons.classList.add("button-light");}
-		)
+			)
 		finalButton.forEach((buttons)=>{
 			buttons.classList.remove("finalButton");
 			buttons.classList.add("finalButton-light");}
-		)
+			)
 		menuButton.forEach((buttons)=>{
 			buttons.classList.remove("menuButton");
 			buttons.classList.add("menuButton-light");}
-		)
-		
+			)
+			
 
-	}
+		}
 }
 
 //tampilan menu utama 	
@@ -91,7 +85,22 @@ const menu = () => {
 		window.close();
 	}) // aku gak ngerti kenapa kadang gak berfungsi ya
 }	
+var timer;
+var timeLeft;
+const start = () =>{
+	timeLeft = 10;
+	timer = setInterval(function(){
+		document.getElementById("countdown").innerText = `Timer Left: ${timeLeft} s`;
+		if (timeLeft <= 0){
+			clearInterval(timer);
+		}
+	timeLeft--;
+	}, 1000);
+}
 
+function stop(){
+	clearInterval(timer);
+}
 //game
 const game = () => {
 	var playerScore = 0;
@@ -124,24 +133,26 @@ const game = () => {
 				})
 				playerHand.src = `src/rockmatch.png`;
                 botHand.src = `src/rockmatch.png`;
+				
 				setTimeout(() => {
 					// call fungsi untuk cek pemenangnya siapa
 					winner(this.innerText,botChoice);
 					playerTurn.forEach(buttons => {
 						buttons.disabled = false;
 					})
-
+					
 					playerHand.src = `src/${this.innerText}match.png`;
                 	botHand.src = `src/${botChoice}match.png`;
 					// Deklarasi kalau jatah giliran sudah habis
+					start();
 					if(moves == 0){
 						gameOver(playerTurn,movesLeft);
 					}
 				}, 2000);
 				//Working on animation
+				stop();
 				playerHand.style.animation = 'shakePlayer 2s ease';
 				botHand.style.animation = 'shakeBot 2s ease';
-
 			})
 		})
 		hands.forEach(hand => {
@@ -157,8 +168,14 @@ const game = () => {
 		const playerScoreBoard = document.querySelector('.playerPoint');
 		const botScoreBoard = document.querySelector('.botPoint');
 		
+		if (timeLeft==0){
+			result.textContent = 'Bot Menang';
+			botScore++;
+			botScoreBoard.textContent = botScore;
+
+		}
 		//Kasus seri
-		if(player == bot){
+		else if(player == bot){
 			result.textContent = 'Seri'
 		}
 		//Kasus bot menang

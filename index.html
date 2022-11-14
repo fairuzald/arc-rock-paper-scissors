@@ -13,7 +13,7 @@
 			<h1 class="title" id="title">Rock Paper Scissors</h1>
 			<h3 class="miniText" id="miniText">Mini Game Web</h3>
 			<div class="menuBody">
-			<button class="menuButton" id="playButton" onclick="welcome()">Play</button>
+			<button class="menuButton" id="playButton">Play</button>
 				<button class="menuButton" id="exitButton">Exit</button>
 			</div>
 		</div>
@@ -45,10 +45,11 @@
 		
 			<!--Sisa giliran -->
 			<div class="movesleft">Kesempatan : 5 </div>
-				<div class="move">Tentukan Pilihanmu Kawan</div>
-		
+			<div class="countdown" id="countdown">Timer Left: 10 s</div>
+			<div class="move">Tentukan Pilihanmu Kawan</div>
+			<!-- <button onclick="start()">new</button> -->
 			<div class="options">
-				<button class="button" id="rock"><img class="imageButton" src="src/rock.png" >rock</button><!--Coba pake multidictionary-->
+				<button class="button" id="rock"><img class="imageButton" src="src/rock.png" >rock</button>
 				<button class="button" id="paper"><img class="imageButton" src="src/paper.png">paper</button>
 				<button class="button" id="scissor"> <img class="imageButton" src="src/scissors.png">scissors</button>
 			<!--Lagi cari gambar yang cucok-->
