@@ -3,12 +3,14 @@ const toggleMode=()=>{
 	const select2 = document.getElementById("titles");
 	const scoreboard = document.getElementById("scores");
 	const text = document.getElementById("miniText");
+	const modebutton = document.querySelector(".darkmode")
 	const menu = document.getElementById("menu");
-	var allButton = [document.getElementById("rock"),document.getElementById("paper"),document.getElementById("scissor")];
+	const allButton = [document.getElementById("rock"),document.getElementById("paper"),document.getElementById("scissor")];
 	const menuButton = [document.getElementById("playButton"),document.getElementById("exitButton")]
 	const finalButton = [,document.getElementById("reset"),document.getElementById("mainMenu")]
 	if (document.body.style.backgroundImage=="linear-gradient(to right bottom, rgb(255, 255, 255), rgb(211, 216, 238))"){
 		document.body.style.backgroundImage="linear-gradient(to right bottom, #191b2a, #122a3b)";
+		modebutton.src = `src/dark_mode.png`;
 		menu.classList.remove("menu-light");
 		menu.classList.add("menu");
 		select.classList.remove("title-light");
@@ -21,13 +23,10 @@ const toggleMode=()=>{
 		scoreboard.classList.add("score");
 		games.classList.remove("game-light")
 		games.classList.add("game")
-		// button.classList.remove("button-light");
-		// button.classList.add("button");
 		allButton.forEach((buttons)=>{
 			buttons.classList.remove("button-light");
 			buttons.classList.add("button");}
 			)
-			
 		finalButton.forEach((buttons)=>{
 			buttons.classList.remove("finalButton-light");
 			buttons.classList.add("finalButton");}
@@ -38,10 +37,9 @@ const toggleMode=()=>{
 			)
 		}
 	else{
+		modebutton.src = `src/light_mode.png`;
 		menu.classList.remove("menu");
 		menu.classList.add("menu-light");
-		// button.classList.remove("button");
-		// button.classList.add("button-light");
 		select.classList.remove("title");
 		select.classList.add("title-light");
 		select2.classList.remove("title");
@@ -80,33 +78,49 @@ const menu = () => {
 	playBtn.addEventListener('click',() => {
 		menu.style.display = "none";
 		game.style.display = "flex";
+		start();
 	})
 	exitButton.addEventListener('click',() => {
 		window.close();
 	}) // aku gak ngerti kenapa kadang gak berfungsi ya
 }	
+
 var timer;
 var timeLeft;
 const start = () =>{
+	const result = document.querySelector('.result');
+	const botScoreBoard = document.querySelector('.botPoint');
+	const movesLeft = document.querySelector('.movesleft');
+
 	timeLeft = 10;
 	timer = setInterval(function(){
 		document.getElementById("countdown").innerText = `Timer Left: ${timeLeft} s`;
-		if (timeLeft <= 0){
+		if (timeLeft == 0){
 			clearInterval(timer);
+			moves--;
+			movesLeft.innerText = `Move Left : ${moves}`;
+			botScore++;
+			botScoreBoard.textContent = botScore;
+			result.textContent = 'You Lose';
 		}
+		
 	timeLeft--;
 	}, 1000);
 }
 
-function stop(){
+const stop=()=>{
 	clearInterval(timer);
 }
+
 //game
+var moves;
+var botScore;
+var playerScore;
+
 const game = () => {
-	var playerScore = 0;
-	var botScore = 0;
-	var moves = 5;
-	
+	moves = 5;
+	botScore = 0;
+	playerScore = 0;
 	// Deklarasi awal button player
 	const playGame = () => {
 		const rockButton = document.querySelector('#rock');
@@ -117,13 +131,13 @@ const game = () => {
 		const playerHand = document.querySelector('.player-hand');
 		const botHand = document.querySelector('.bot-hand');
 		const hands = document.querySelectorAll('.popUp img');;
-	
+		
 		// Aksi untuk tiap button
 		playerTurn.forEach(action => {
 			action.addEventListener('click',function(){
 				const movesLeft = document.querySelector('.movesleft');
 				moves--;
-				movesLeft.innerText = `Kesempatan : ${moves}`;
+				movesLeft.innerText = `Move Left : ${moves}`;
 				// pilihan random bot
 				const botChoice = botTurn[Math.floor(Math.random()*3)];
 				// untuk menampilkan gambar hasil pertandingan
@@ -167,28 +181,21 @@ const game = () => {
 		const result = document.querySelector('.result');
 		const playerScoreBoard = document.querySelector('.playerPoint');
 		const botScoreBoard = document.querySelector('.botPoint');
-		
-		if (timeLeft==0){
-			result.textContent = 'Bot Menang';
-			botScore++;
-			botScoreBoard.textContent = botScore;
-
+		//Kasus Tie
+		if(player == bot){
+			result.textContent = 'Tie'
 		}
-		//Kasus seri
-		else if(player == bot){
-			result.textContent = 'Seri'
-		}
-		//Kasus bot menang
+		//Kasus You Lose
 		else if(player == 'paper' && bot == 'scissors' ||
 				player == 'scissors' && bot == 'rock' ||
 				player == 'rock' && bot == 'paper'){
-				result.textContent = 'Bot Menang';
+				result.textContent = 'You Lose';
 				botScore++;
 				botScoreBoard.textContent = botScore;
 		}
-		//Kasus player menang
+		//Kasus You Win
 		else{
-				result.textContent = 'Player Menang'
+				result.textContent = 'You Win'
 				playerScore++;
 				playerScoreBoard.textContent = playerScore;
 		}
@@ -196,38 +203,39 @@ const game = () => {
 		
 	// Giliran udah limit
 	const gameOver = (playerTurn,movesLeft) => {
-		var chooseMove = document.querySelector('.move');
+		const chooseMove = document.querySelector('.move');
 		const result = document.querySelector('.result');
-		const reloadButton = document.querySelector('#reset');
+		const resetButton = document.querySelector('#reset');
 		const backButton = document.querySelector('#mainMenu');
-
+		const timeLeft = document.querySelector('#countdown');
+		// menghilangkan setiap tombol button hand, tampilan Move Left sisa dan waktu countdown
 		playerTurn.forEach(action => {
 			action.style.display = 'none';
 		})
-	
-		chooseMove.innerText = 'Game Over!!'
 		movesLeft.style.display = 'none';
+		timeLeft.style.display = 'none';
+	
+		// Menampilkan game over
+		chooseMove.innerText = 'Game Over!!'
+		// Memperbesar ukuran font hasil akhir
+		result.style.fontSize = '2rem';
 
+		// Kalkulasi dan aksi terhadap hasil akhir
 		if(playerScore > botScore){
-			result.style.fontSize = '2rem';
-			result.innerText = 'Kamu Menang !!!'
-			result.style.color = '#308D46';
+			result.innerText = 'Player Win !!!'
 		}
 		else if(playerScore < botScore){
-			result.style.fontSize = '2rem';
-			result.innerText = 'Kamu Kalah !!';
-			result.style.color = 'red';
+			result.innerText = 'Bot Win !!';
 		}
 		else{
-			result.style.fontSize = '2rem';
-			result.innerText = 'Seri';
-			result.style.color = 'grey'
+			result.innerText = 'Tie';
 		}
-		reloadButton.innerText = 'Reset';
-		reloadButton.style.display = 'flex';
-		backButton.innerText = 'Main Menu';
+		// menampilkan tombol reset dan back to menu utama
+		resetButton.style.display = 'flex';
 		backButton.style.display = 'flex';
-		reloadButton.addEventListener('click',()=>{
+
+		//aksi tombol reset
+		resetButton.addEventListener('click',()=>{
 			const playerScoreBoard = document.querySelector('.playerPoint');
 			const botScoreBoard = document.querySelector('.botPoint');
 			const playerHand = document.querySelector('.player-hand');
@@ -235,15 +243,17 @@ const game = () => {
 			playerTurn.forEach(action => {
 				action.style.display = 'flex';
 			})
-			chooseMove.innerText = 'Tentukan Pilihanmu Kawan!!'
-			reloadButton.style.display = 'none';
+			chooseMove.innerText = 'Choose Your Attempt!!'
+
+			resetButton.style.display = 'none';
 			backButton.style.display = 'none';
 			playerScore = 0;
 			botScore = 0;
 			moves = 5;
-			result.style.color = 'white';
 			result.style.fontSize = '1.2rem';
 			movesLeft.style.display = 'flex';
+			timeLeft.style.display = 'flex';
+
 			result.innerText = '';
 			playerHand.src = `src/rockmatch.png`;
             botHand.src = `src/rockmatch.png`;
