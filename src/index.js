@@ -10,7 +10,7 @@ const toggleMode=()=>{
 	const finalButton = [,document.getElementById("reset"),document.getElementById("mainMenu")]
 	if (document.body.style.backgroundImage=="linear-gradient(to right bottom, rgb(255, 255, 255), rgb(211, 216, 238))"){
 		document.body.style.backgroundImage="linear-gradient(to right bottom, #191b2a, #122a3b)";
-		modebutton.src = `src/dark_mode.png`;
+		modebutton.src = `src/img/dark_mode.png`;
 		menu.classList.remove("menu-light");
 		menu.classList.add("menu");
 		select.classList.remove("title-light");
@@ -37,7 +37,7 @@ const toggleMode=()=>{
 			)
 		}
 	else{
-		modebutton.src = `src/light_mode.png`;
+		modebutton.src = `src/img/light_mode.png`;
 		menu.classList.remove("menu");
 		menu.classList.add("menu-light");
 		select.classList.remove("title");
@@ -145,8 +145,8 @@ const game = () => {
 				playerTurn.forEach(buttons => {
 					buttons.disabled = true;
 				})
-				playerHand.src = `src/rockmatch.png`;
-                botHand.src = `src/rockmatch.png`;
+				playerHand.src = `src/img/rockmatch.png`;
+                botHand.src = `src/img/rockmatch.png`;
 				
 				setTimeout(() => {
 					// call fungsi untuk cek pemenangnya siapa
@@ -155,8 +155,8 @@ const game = () => {
 						buttons.disabled = false;
 					})
 					
-					playerHand.src = `src/${this.innerText}match.png`;
-                	botHand.src = `src/${botChoice}match.png`;
+					playerHand.src = `src/img/${this.innerText}match.png`;
+                	botHand.src = `src/img/${botChoice}match.png`;
 					// Deklarasi kalau jatah giliran sudah habis
 					start();
 					if(moves == 0){
@@ -255,8 +255,8 @@ const game = () => {
 			timeLeft.style.display = 'flex';
 
 			result.innerText = '';
-			playerHand.src = `src/rockmatch.png`;
-            botHand.src = `src/rockmatch.png`;
+			playerHand.src = `src/img/rockmatch.png`;
+            botHand.src = `src/img/rockmatch.png`;
 			botScoreBoard.textContent = botScore;
 			playerScoreBoard.textContent = playerScore;
 	})
