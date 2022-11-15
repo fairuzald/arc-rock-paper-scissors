@@ -140,18 +140,28 @@ const gameOver = (playerTurn,movesLeft) => {
 //tampilan menu utama 	
 const menu = () => {
 	const playBtn = document.querySelector("#playButton");
+	const infoBtn = document.querySelector("#infoButton");
 	const game = document.querySelector(".game");
 	const menu = document.querySelector(".menu");
+	const tutorial = document.querySelector(".tutorial");
 	const exitButton = document.querySelector("#exitButton");
 	playBtn.addEventListener('click',() => {
 		menu.style.display = "none";
 		game.style.display = "flex";
 		start();
 	})
+	infoBtn.addEventListener('click',() => {
+		menu.style.display = "none";
+		tutorial.style.display = "flex";
+		window.close();});
 	exitButton.addEventListener('click',() => {
 		window.close();
 	}) // aku gak ngerti kenapa kadang gak berfungsi ya
-}	
+}
+
+function reload(){
+	window.location.reload();
+}
 
 var timer;
 var timeLeft;

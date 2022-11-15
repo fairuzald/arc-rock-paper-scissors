@@ -49,6 +49,7 @@ body{
 	top: 0;
 	font-size: 4vh;
 	z-index: 2;
+	margin-top: 10px;
     background-clip:text;
 	background: -webkit-linear-gradient( rgb(24, 24, 25),rgb(124, 139, 171));
   	-webkit-background-clip: text;
@@ -79,7 +80,6 @@ body{
 	cursor : pointer;
 	position: absolute;
 	display: flex;
-
 	border-radius: 1000px;
 	background: none;
 	border: none;
@@ -127,8 +127,9 @@ body{
     flex-direction: column;
 	
 }
-#playButton{
+#infoButton{
 	margin-bottom: 7vh;
+	margin-top: 7vh;
 }
 
 .game{
@@ -184,6 +185,7 @@ body{
   	-webkit-background-clip: text;
   	-webkit-text-fill-color: transparent;
 	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 /*Tampilan Skor */
@@ -291,7 +293,6 @@ button:disabled:hover{
 	cursor: wait;
   }
 
-
 .bot-hand {
 	width: 9vw;
 	height: 14vh;
@@ -309,6 +310,7 @@ button:disabled:hover{
 
 .movesleft{
 	margin-top: 3vh;
+	margin-bottom: 1.5vh;
 }
 .move{
 	font-size: 2vw	;
@@ -434,4 +436,41 @@ button:disabled:hover{
     100%{
         transform: translateY(0px);
     }
+}
+
+#inform{
+	display: flex;
+    justify-content: space-evenly;
+	flex-direction: column;
+	/* line-height: 4vh; */
+    margin: 0 auto;
+	border-radius: 2vw;
+    width: 70vw;
+    height: 90vh;
+	background-image: linear-gradient(to right bottom, #112c40,#272b45);
+}
+.tutorial{
+	display: none;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+}
+#intro{
+	line-height: 4vh;
+}
+#content{
+	line-height: 3vh;
+}
+.infoImage {
+	display: flex;
+	width: 30vw;
+	justify-content: space-evenly;
+}
+.caption {
+    display: block;
+}
+div #content{
+	width: 50vw;
 }
