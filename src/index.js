@@ -1,28 +1,28 @@
 const toggleMode=()=>{
-	const select = document.getElementById("title");
-	const select2 = document.getElementById("titles");
-	const scoreboard = document.getElementById("scores");
+	const select = [document.getElementById("title"),document.getElementById("titles"),document.getElementById("titleInfo")];
+	const scoreboard = [document.getElementById("scores"),document.getElementById("inform")];
 	const text = document.getElementById("miniText");
 	const modebutton = document.querySelector(".darkmode")
 	const menu = document.getElementById("menu");
 	const allButton = [document.getElementById("rock"),document.getElementById("paper"),document.getElementById("scissor")];
-	const menuButton = [document.getElementById("playButton"),document.getElementById("exitButton")]
+	const menuButton = [document.getElementById("playButton"),document.getElementById("exitButton"),document.getElementById("infoButton"),,document.getElementById("backMenu")]
 	const finalButton = [,document.getElementById("reset"),document.getElementById("mainMenu")]
 	if (document.body.style.backgroundImage=="linear-gradient(to right bottom, rgb(255, 255, 255), rgb(211, 216, 238))"){
 		document.body.style.backgroundImage="linear-gradient(to right bottom, #191b2a, #122a3b)";
 		modebutton.src = `src/img/dark_mode.png`;
 		menu.classList.remove("menu-light");
 		menu.classList.add("menu");
-		select.classList.remove("title-light");
-		select.classList.add("title");
-		select2.classList.remove("title-light");
-		select2.classList.add("title");
 		text.classList.remove("miniText-light");
 		text.classList.add("miniText");
-		scoreboard.classList.remove("score-light");
-		scoreboard.classList.add("score");
-		games.classList.remove("game-light")
+		scoreboard.forEach(element => {
+		element.classList.remove("score-light");
+		element.classList.add("score")});
+		games.classList.remove("game-light");
 		games.classList.add("game")
+		select.forEach(element=>{
+			element.classList.remove("title-light");
+			element.classList.add("title");
+		})
 		allButton.forEach((buttons)=>{
 			buttons.classList.remove("button-light");
 			buttons.classList.add("button");}
@@ -38,20 +38,21 @@ const toggleMode=()=>{
 		}
 	else{
 		modebutton.src = `src/img/light_mode.png`;
+		document.body.style.backgroundImage="linear-gradient(to right bottom, #ffffff, #d3d8ee)";
 		menu.classList.remove("menu");
 		menu.classList.add("menu-light");
-		select.classList.remove("title");
-		select.classList.add("title-light");
-		select2.classList.remove("title");
-		select2.classList.add("title-light");
 		text.classList.remove("miniText");
 		text.classList.add("miniText-light");
-		document.body.style.backgroundImage="linear-gradient(to right bottom, #ffffff, #d3d8ee)";
-		scoreboard.classList.remove("score");
-		scoreboard.classList.add("score-light");
 		games.classList.remove("game")
 		games.classList.add("game-light")
-		// console.log(button);
+		select.forEach(element=>{
+			element.classList.remove("title");
+			element.classList.add("title-light");
+		})
+		scoreboard.forEach(element => {
+			element.classList.remove("score");
+			element.classList.add("score-light");	
+		});
         allButton.forEach((buttons)=>{
 			buttons.classList.remove("button");
 			buttons.classList.add("button-light");}
@@ -153,7 +154,7 @@ const menu = () => {
 	infoBtn.addEventListener('click',() => {
 		menu.style.display = "none";
 		tutorial.style.display = "flex";
-		window.close();});
+	});
 	exitButton.addEventListener('click',() => {
 		window.close();
 	}) // aku gak ngerti kenapa kadang gak berfungsi ya
@@ -179,6 +180,8 @@ const start = () =>{
 		document.getElementById("countdown").innerText = `Timer Left : ${timeLeft} s`;
 		if (timeLeft == 0){
 			stop();
+			document.querySelector('.player-hand').src = `src/img/rockmatch.png`;
+			document.querySelector('.bot-hand').src = `src/img/papermatch.png`;
 			moves--;
 			movesLeft.innerText = `Move Left : ${moves}`;
 			document.getElementById("countdown").innerText = `Times Up !!!`;

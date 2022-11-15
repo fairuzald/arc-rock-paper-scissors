@@ -41,6 +41,7 @@ body{
 	border-radius: 2vw;
     width: 40vw;
     height: 55vh;
+	color: black;
 	background-color: rgb(21, 21, 21);
 	background-image: linear-gradient(to right bottom, #dce2f0	,#c8cfec);
     text-align: center;	 	 
@@ -442,12 +443,10 @@ button:disabled:hover{
 	display: flex;
     justify-content: space-evenly;
 	flex-direction: column;
-	/* line-height: 4vh; */
     margin: 0 auto;
 	border-radius: 2vw;
     width: 70vw;
-    height: 90vh;
-	background-image: linear-gradient(to right bottom, #112c40,#272b45);
+    height: 80vh;
 }
 .tutorial{
 	display: none;
