@@ -1,51 +1,23 @@
 *{
 	padding: 0;
 	margin: 0;
-	box-sizing: border-box;
-	/* color: #fff; */
-	
 }
+
 *:not(h1, h2) {
     font-family: "Montserrat";
     font-size: 2vh;
 }
+
 body{
-	/* background: #142938; */
 	background-image: linear-gradient(to right bottom, #191b2a, #122a3b);
 	color: #fff;
 }
 
-
-
 .light-mode {
 	background-image: linear-gradient(to right bottom, #ffffff, #d3d8ee);
-  /* background: white; */
-  color: rgb(0, 0, 0);
+	color: rgb(0, 0, 0);
 }
 
-.game-light{
-	display: none;
-	flex-direction: column;
-	height: 100vh;
-	width: 100vw;
-	justify-content: center;
-	align-items: center;
-	color:black;
-}
-.score-light{
-	display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-    margin: 0 auto;
-	border-radius: 2vw;
-    width: 40vw;
-    height: 55vh;
-	color: black;
-	background-color: rgb(21, 21, 21);
-	background-image: linear-gradient(to right bottom, #dce2f0	,#c8cfec);
-    text-align: center;	 	 
-}
 .title-light{
 	top: 0;
 	font-size: 4vh;
@@ -93,13 +65,12 @@ body{
 	cursor:pointer;
 	transition:cubic-bezier(0.215, 0.610, 0.355, 1);
 	transform: scale(110%);
-
 	background: #f9c440;
 }
 
 .darkmode{
-	width: 50px;
-	height: 50px;
+	width: 4vw;
+	height: 4vw;
 }
 
 .menu{
@@ -131,16 +102,6 @@ body{
 #infoButton{
 	margin-bottom: 7vh;
 	margin-top: 7vh;
-}
-
-.game{
-	display: none;
-	flex-direction: column;
-	height: 100vh;
-	width: 100vw;
-	justify-content: center;
-	align-items: center;
-	color:white
 }
 
 .menuButton{
@@ -177,6 +138,26 @@ body{
 }
 
 /* Bagian Game  */
+.game{
+	display: none;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+	color:white
+}
+
+.game-light{
+	display: none;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+	color:black;
+}
+
 .title{
 	top: 0;
 	font-size: 4vh;
@@ -203,6 +184,20 @@ body{
 	background-image: linear-gradient(to right bottom, #112c40,#272b45);
     text-align: center;
 }
+.score-light{
+	display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+	border-radius: 2vw;
+    width: 40vw;
+    height: 55vh;
+	color: black;
+	background-color: rgb(21, 21, 21);
+	background-image: linear-gradient(to right bottom, #dce2f0	,#c8cfec);
+    text-align: center;	 	 
+}
 .point{
 	justify-content: space-evenly;
     align-items: end;
@@ -217,9 +212,12 @@ body{
 /* Nilai Skor*/
 .playerPoint,.botPoint{
 	text-align: center;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	margin-top: 1rem;
 	margin-bottom: 1vw;
+}
+.playerScore h2,.botScore h2{
+	font-size: 1.2rem;
 }
 .popUp{
 	display: flex;
@@ -295,13 +293,13 @@ button:disabled:hover{
   }
 
 .bot-hand {
-	width: 9vw;
-	height: 14vh;
+	width:7vw;
+	height:7vw;
 
 }
 .player-hand {
-	width: 9vw;
-	height: 14vh;
+	width:7vw;
+	height:7vw;
     transform: rotateY(180deg);
 }
 .imageButton{
@@ -317,6 +315,15 @@ button:disabled:hover{
 	font-size: 2vw	;
 	font-weight: bold;
 	margin-top: 2vh;
+}
+
+.result{
+	display: flex;
+	margin-right: 10vw;
+	margin-left: 10vw;
+	font-size: 1.2rem;
+	justify-content: center;
+	align-items: center;
 }
 
 /* button akhir */
@@ -354,31 +361,96 @@ button:disabled:hover{
 	transform: scale(110%);
 	background: #8f9fee ;
 }
-
-.result{
+/* Menu Tutorial */
+#inform{
 	display: flex;
-	margin-right: 10vw;
-	margin-left: 10vw;
-	font-size: 1.2rem;
+    justify-content: space-evenly;
+	flex-direction: column;
+    margin: 0 auto;
+	border-radius: 2vw;
+    width: 70vw;
+    height: 80vh;
+}
+.tutorial{
+	display: none;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
 	justify-content: center;
 	align-items: center;
 }
+#intro{
+	line-height: 4vh;
+}
+#content{
+	line-height: 3vh;
+}
+.infoImage {
+	display: flex;
+	width: 30vw;
+	justify-content: space-evenly;
+}
+.caption{
+	display: block;
+}
+#content div,#intro div{
+	width: 50vw;
+}
 
-/* Responsive Design */
-@media screen and (max-width: 612px)
+/* Responsive Design Mode HP*/
+@media screen and (max-width: 612px) 
 {
-	.title{
+	.title,.title-light{
 		text-align: center;
+		font-size: 6.6vw;
 	}
-	.score{
-		position: absolute;
-		top: 200px;
-		width: 100vw;
+	#title{
+		font-size: 7vw;
+		margin: 7vw;
+	}
+	.score,.score-light{
+		width: 80vw;
+		height: 60vh;
+	}
+	.playerPoint,.botPoint{
+		font-size: 1rem;;
+	}
+	.playerScore h2,.botScore h2{
+		font-size: 1.2rem;
 	}
 	.options{
-		width: 100vw;
+		width: 80vw;
+	}
+	.bot-hand,.player-hand{
+		width : 9vh;
+		height: 9vh;
+	}
+	.imageButton{
+		width: 10vw;
+		height: 10vw;
+	}
+	.darkmode{
+		width: 8vw;
+		height: 8vw;
+	}
+	.move{
+		font-size: 1.1rem;
+	}
+	.info div{
+		font-size: 0.8rem;
+		line-height: 5vw;
+	}	
+	#intro div{
+		width: 50vw;
+	}
+	.infoImage{
+		width: 40vw;
+	}
+	.caption{
+		font-size: 3vw;
 	}
 }
+/* Animasi */
 @keyframes shakePlayer {
     0%{
         transform: rotateY(180deg) translateY(0px);
@@ -439,37 +511,3 @@ button:disabled:hover{
     }
 }
 
-#inform{
-	display: flex;
-    justify-content: space-evenly;
-	flex-direction: column;
-    margin: 0 auto;
-	border-radius: 2vw;
-    width: 70vw;
-    height: 80vh;
-}
-.tutorial{
-	display: none;
-	flex-direction: column;
-	height: 100vh;
-	width: 100vw;
-	justify-content: center;
-	align-items: center;
-}
-#intro{
-	line-height: 4vh;
-}
-#content{
-	line-height: 3vh;
-}
-.infoImage {
-	display: flex;
-	width: 30vw;
-	justify-content: space-evenly;
-}
-.caption {
-    display: block;
-}
-div #content{
-	width: 50vw;
-}
